@@ -23,10 +23,10 @@ export const editPostLayout = async(req, res)=>{
         };
         const data = await Post.findOne({ _id: req.params.id });
     
-        res.render("admin/edit-post", {
+        res.render("username/edit-post", {
           data,
           locals,
-          layout: "./layouts/admin",
+          layout: "./layouts/user",
         });
       } catch (error) {
         console.log(error);

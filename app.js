@@ -20,7 +20,7 @@ import homeRoutes from "./server/routes/home.routes.js"
 //configs
 dotenv.config();
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = 3000 || process.env.PORT;
 connectDB();
 
 //methodoverride and cookies

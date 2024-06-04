@@ -1,19 +1,22 @@
 import express from "express";
 import { ReturnDocument } from "mongodb";
-import { aPost, home, search } from "../controllers/home.controller.js";
+import { aPost,  allPosts,  search } from "../controllers/home.controller.js";
 
 const router = express.Router();
 
 //home
-router.get("/", home);
+router.get("/", (req, res) =>{
+  res.render("index")
+});
+router.get("/allposts", allPosts);
 
 //about
-router.get("/about", (req, res) => {
-  res.render("about");
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 //contact
-router.get("/contact", (req, res) => {
-  res.render("contact");
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
 //single post

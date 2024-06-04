@@ -1,12 +1,13 @@
 <div class="admin-title">
     <h2>Posts</h2>
-    <a href="/admin-post" class="button">+ Add new</a>
+    <!-- use ejs out and make /username a dynamic route -->
+    <a href="/username" class="button">+ Add new</a>
 </div>
 <ul class="admin-posts">
     <% data.forEach(post => { %>
      
         <li>
-            <a href="/post/<%= post._id %>" target="_blank">
+            <a href="/username/post/<%= post._id %>" target="_blank">
                 <%= post.title %> &nearr;
             </a>
             

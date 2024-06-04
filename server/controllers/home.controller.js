@@ -2,13 +2,13 @@ import express from "express";
 import Post from "../models/Post.js";
 
 //this will change to a single list of posts page
-export const home = async (req, res) => {
+export const allPosts = async (req, res) => {
   try {
     const locals = {
       title: "Home",
       description: "Welcome to blogger",
     };
-    let perPage = 4;
+    let perPage = 10;
     let page = req.query.page || 1;
 
     const data = await Post.aggregate([{ $sort: { createdAt: -1 } }])
@@ -18,7 +18,7 @@ export const home = async (req, res) => {
     const count = await Post.countDocuments({});
     const nextPage = parseInt(page) + 1;
     const hasNextPage = nextPage <= Math.ceil(count / perPage);
-    res.render("index", {
+    res.render("allposts", {
       locals,
       data,
       current: page,

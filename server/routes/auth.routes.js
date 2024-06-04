@@ -11,7 +11,7 @@ router.get("/login", async (req, res) => {
     };
     //rename admin folder user folder and admin/indext to login
     //change admin layout to login layout
-    res.render("admin/index", { locals, layout: "./layouts/admin" });
+    res.render("/login", { locals, layout: "./layouts/main" });
   } catch (error) {
     console.log(error);
   }
@@ -27,7 +27,7 @@ router.get("/signup", async (req, res) => {
     };
     //rename admin folder  to 'user' and admin/index to 'user/login'
     //change admin layout to login layout
-    res.redirect("admin/register", { locals, layout: "./layouts/admin" });
+    res.redirect("/signup", { locals, layout: "./layouts/main" });
   } catch (error) {
     console.log(error);
   }
