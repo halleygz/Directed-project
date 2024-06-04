@@ -1,6 +1,6 @@
 import express from "express";
-import { middleware } from "../middleware/middleware";
-import Post from "../models/Post";
+import { middleware } from "../middleware/middleware.js";
+import Post from "../models/Post.js";
 import {
   delPost,
   editPost,
@@ -41,3 +41,5 @@ router.post("/username/post", middleware, newPost);
 router.get("/username/edit-post/:id", middleware, editPostLayout);
 router.put("/username/edit-post/:id", middleware, editPost);
 router.delete("/username/delete-post/:id", middleware, delPost);
+
+export default router

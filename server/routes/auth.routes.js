@@ -34,3 +34,4 @@ router.get("/signup", async (req, res) => {
 });
 router.post("/signup", signup);
 router.get("/logout", logout);
+export default router;

@@ -21,3 +21,4 @@ router.get("/post/:id", aPost)
 
 //search 
 router.post("/search", search)
+export default router;

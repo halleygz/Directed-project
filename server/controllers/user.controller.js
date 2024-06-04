@@ -1,4 +1,4 @@
-import Post from "../models/Post";
+import Post from "../models/Post.js";
 
 // send new post to db
 export const newPost = async(req, res) => {
