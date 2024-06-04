@@ -1,1 +1,0 @@
-// any user(blog poster) related backend will be here
