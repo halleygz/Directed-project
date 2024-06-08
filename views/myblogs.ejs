@@ -9,10 +9,10 @@
     <div class="card">
       <div class="image"></div>
       <div class="text">
-        <a href="/blog/<%= blog.document._id %>">
-          <h2><%= blog.document.title %></h2>
-          <p class="article-list__date"><%= blog.document.createdAt.toDateString() %></p>
-          <!-- <a href="/blog/edit//<%= blog.document._id %>">edit post</a> -->
+        <a href="/blog/<%= blog._id %>">
+          <h2><%= blog.title %></h2>
+          <p class="article-list__date"><%= blog.createdAt.toDateString() %></p>
+          <!-- <a href="/blog/edit//<%= blog._id %>">edit post</a> -->
         </a>
       </div>
     </div>
