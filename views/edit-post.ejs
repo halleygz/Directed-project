@@ -1,0 +1,33 @@
+<%- include('partials/header'); -%>
+<h2>Edit</h2>
+<form>
+  <label for="title">Title</label>
+  <input type="text" name="title" value="<%= data.title %>" required />
+  <div class="error username"></div>
+  <label for="Content">Content</label>
+  <textarea type="text" name="content" required><%= data.content %></textarea>
+  <div class="error password"></div>
+  <button>Edit Post</button>
+</form>
+<%- include('partials/footer'); -%>
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const { title, content } = {
+      title: form.title.value,
+      content: form.content.value,
+    };
+    try {
+      const res = await fetch("/blog/edit/<%= data._id %>?_method=PUT", {
+        method: "POST",
+        body: JSON.stringify({ title, content }),
+        headers: { "Content-Type": "application/json" },
+      });
+      location.assign("/myblogs")
+    } catch (err) {
+      console.log(err);
+    }
+  });
+</script>

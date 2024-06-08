@@ -1,0 +1,58 @@
+<%- include('partials/header'); -%>
+
+<header>
+  <div class="smoothie">
+    <img src="/smoothie.png" alt="">
+  </div>
+  <div class="headings">
+    <h2>Smoothie Recipes</h2>
+    <h3>By Ninjas For Ninjas</h3>
+    <a href="/allblogs" class="btn">See All Blogs</a>
+  </div>
+</header>
+<form>
+    <h2>Post What's in your mind</h2>
+    <label for="title">Title</label>
+    <input type="text" name="title" required />
+    <div class="error fname"></div>
+    <label for="content">Last Name</label>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <div class="error password"></div>
+    <button>Post</button>
+  </form>
+<script>
+    const form = document.querySelector("form");
+  //const usernameError = document.querySelector(".username.error");
+  //const passwordError = document.querySelector(".password.error");
+  //usernameError.textContent = "";
+  //passwordError.textContent = "";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const { title, content } = {
+      title: form.title.value,
+      content: form.content.value,
+    };
+    try {
+      const res = await fetch("/post-blog", {
+        method: "POST",
+        body: JSON.stringify({ title, content }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+      //if (data.errors) {
+      //    usernameError.textContent = data.errors.username;
+        //passwordError.textContent = data.password;
+      //}
+      //if (data.user) {
+      //  location.assign("/");
+      //}
+    } catch (error) {
+        console.log(err)
+    }
+  });
+</script>
+
+<%- include('partials/footer'); -%>
