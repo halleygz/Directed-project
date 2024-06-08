@@ -63,7 +63,8 @@ module.exports.blog_post = async (req, res) => {
       title,
       content,
     });
-    res.status(201).json({ blog });
+    // res.redirect(`/blog/${blog._id}`)
+    res.status(200).json({ blog });
   } catch (error) {
     const errors = handleErrors(error);
     res.status(401).json(errors);
@@ -102,7 +103,7 @@ module.exports.comment_post = async (req, res) => {
       { new: true, runValidators: true }
     );
     console.log(comments, updateBlog);
-    res.status(201).json({ comments, updateBlog });
+    res.status(200).json({ comments, updateBlog });
   } catch (error) {
     const errors = handleErrors(error);
     res.status(401).json(errors);
@@ -157,25 +158,17 @@ module.exports.aBlog = async (req, res) => {
 };
 module.exports.my_blogs = async (req, res) => {
   try {
-    let userId = "";
+    let authorId = "";
     const token = req.cookies.jwt;
     jwt.verify(token, secret, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
       } else {
         console.log(decodedToken);
-        userId = decodedToken.id;
+        authorId = decodedToken.id;
       }
     });
-    const data = await Blog.aggregate([
-      { $sort: { authorId: 1 } },
-      {
-        $group: {
-          _id: "$authorId",
-          document: { $first: "$$ROOT" },
-        },
-      },
-    ]);
+    const data = await Blog.find({ authorId: authorId }).sort({ createdAt: -1 })
     // console.log(data);
     //res.locals.data = data;
     res.render("myblogs", {
