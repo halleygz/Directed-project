@@ -9,7 +9,11 @@
     <% if (user) { %>
       <h2>Welcome, <%= user.firstName %></h2>
       <% } else { %> <% } %>
+<<<<<<< HEAD
+    <h3>By Ninjas For Ninjas</h3>
+=======
     <h3>By blogger for bloggers</h3>
+>>>>>>> 52577765f0669a094093846275d70fbac0972735
     <a href="/allblogs" class="btn">See All Blogs</a>
   </div>
 </header>
@@ -18,7 +22,11 @@
     <label for="title">Title</label>
     <input type="text" name="title" required />
     <div class="error fname"></div>
+<<<<<<< HEAD
+    <label for="content">Last Name</label>
+=======
     <label for="content">Content</label>
+>>>>>>> 52577765f0669a094093846275d70fbac0972735
     <textarea name="content" id="content" cols="30" rows="10"></textarea>
     <div class="error password"></div>
     <button>Post</button>
@@ -31,7 +39,11 @@
   //passwordError.textContent = "";
 
   form.addEventListener("submit", async (e) => {
+<<<<<<< HEAD
+    //e.preventDefault();
+=======
     e.preventDefault();
+>>>>>>> 52577765f0669a094093846275d70fbac0972735
 
     const { title, content } = {
       title: form.title.value,
@@ -45,6 +57,14 @@
       });
       const data = await res.json();
       console.log(data);
+<<<<<<< HEAD
+      //if (data.errors) {
+      //    usernameError.textContent = data.errors.username;
+        //passwordError.textContent = data.password;
+      //}
+      
+        location.assign("/");
+=======
       location.assign(`/blog/${data.blog._id}`);
       if (data.errors) {
           usernameError.textContent = data.errors.username;
@@ -54,6 +74,7 @@
       if(data.user){
         console.log(`/blog/${data.id}`)
       }
+>>>>>>> 52577765f0669a094093846275d70fbac0972735
     } catch (error) {
         console.log(err)
     }
