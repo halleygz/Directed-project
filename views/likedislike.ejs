@@ -1,0 +1,6 @@
+<div class="buttons">
+    <button class="like-button" onclick="likedPost('<%= data._id %>')" type="submit" <% if (data.likedBy.includes(currentUser._id)) { %>disabled<% } %>>👍</button>
+    <button class="dislike-button" onclick="dislikedPost('<%= data._id %>')" <% if (data.dislikedBy.includes(currentUser._id)) { %>disabled<% } %>>👎</button>
+    <p id="like-count">Likes: <%= data.likes %></p>
+    <p id="dislike-count"> dislikes: <%= data.dislikes %></p>
+</div>

@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const { userInfo } = require("os");
 dotenv.config();
 const secret = process.env.JWT_SECRET;
 //handle errors
@@ -131,6 +132,16 @@ module.exports.allBlogs = async (req, res) => {
 module.exports.aBlog = async (req, res) => {
   try {
     const data = await Blog.findById({ _id: req.params.id });
+    let currentUser = "";
+    const token = req.cookies.jwt;
+    jwt.verify(token, secret, async (err, decodedToken) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log(decodedToken);
+        currentUser = decodedToken.id;
+      }
+    });
     const locals = {
       title: data.title,
       description: "descriptin",
@@ -138,6 +149,7 @@ module.exports.aBlog = async (req, res) => {
     res.render("singleblog", {
       locals,
       data,
+      currentUser,
     });
   } catch (err) {
     console.log(err);
@@ -193,7 +205,7 @@ module.exports.edit_blog = async (req, res) => {
     });
     const paramId = req.params.id;
     const data = await Blog.findById({ _id: paramId });
-    console.log(userId, data.authorId.toString())
+    console.log(userId, data.authorId.toString());
     if (userId === data.authorId.toString()) {
       res.render("edit-post", { data });
     } else {
@@ -205,16 +217,59 @@ module.exports.edit_blog = async (req, res) => {
   }
 };
 
-module.exports.edit_blog_put = async(req, res)=>{
+module.exports.edit_blog_put = async (req, res) => {
   try {
-    const {title, content} = req.body
-    console.log(title,content)
+    const { title, content } = req.body;
+    console.log(title, content);
     await Blog.findByIdAndUpdate(req.param.id, {
       title,
       content,
-      unpdatedAt: Date.now()
-    })
+      unpdatedAt: Date.now(),
+    });
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};
+
+module.exports.liked_post = async (req, res) => {
+  let user = "";
+
+  const token = req.cookies.jwt;
+  jwt.verify(token, secret, async (err, decodedToken) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      console.log(decodedToken);
+      user = decodedToken.id;
+    }
+  });
+  const blog = await Blog.findById(req.params.id);
+
+  if (!blog.likedBy.includes(user) && !blog.dislikedBy.includes(user)) {
+    blog.likes += 1;
+    blog.likedBy.push(user);
+    await blog.save();
+  }
+  res.json({ likes: blog.likes })
+};
+
+module.exports.disliked_post = async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  let user = "";
+
+  const token = req.cookies.jwt;
+  jwt.verify(token, secret, async (err, decodedToken) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      console.log(decodedToken);
+      user = decodedToken.id;
+    }
+  });
+  if (!blog.likedBy.includes(user) && !blog.dislikedBy.includes(user)) {
+    blog.dislikes += 1;
+    blog.dislikedBy.push(user);
+    await blog.save();
+  }
+  res.json({ dislikes: blog.dislikes })
+};

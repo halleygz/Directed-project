@@ -9,14 +9,52 @@
       <p><%= data.content %></p>
     </div>
   </article>
-  <div class="buttons">
-    <button class="like-button">👍</button>
-    <button class="dislike-button">👎</button>
-  </div>
+  <%- include('likedislike'); -%>
   <%- include('comments'); -%>
 </main>
 <%- include('partials/footer'); -%>
 <script>
+  async function likedPost(blogId){
+    try{
+      console.log(`/blogs/${blogId}/like`)
+      const response = await fetch(`/blog/${blogId}/like`, {
+        method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+      })
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('like-count').textContent = `Likes: ${data.likes}`;
+        document.querySelector('.like-button').disabled = true;
+        document.querySelector('.dislike-button').disabled = true;
+    }
+    } catch (error){
+      console.error('Error liking post:', error)
+    }
+  }
+  async function dislikedPost(blogId){
+    try{
+      const response = await fetch(`/blog/${blogId}/dislike`, {
+        method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+      })
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('dislike-count').textContent = `Dislikes: ${data.dislikes}`;
+        document.querySelector('.like-button').disabled = true;
+        document.querySelector('.dislike-button').disabled = true;
+    }
+    } catch (error){
+      console.error('Error liking post:', error)
+    }
+  }
   const form = document.querySelector("form");
 
   form.addEventListener("submit", async (e) => {
