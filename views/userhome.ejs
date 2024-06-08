@@ -1,11 +1,14 @@
 <%- include('partials/header'); -%>
 
 <header>
+  
   <div class="smoothie">
     <img src="/smoothie.png" alt="">
   </div>
   <div class="headings">
-    <h2>Smoothie Recipes</h2>
+    <% if (user) { %>
+      <h2>Welcome, <%= user.firstName %></h2>
+      <% } else { %> <% } %>
     <h3>By Ninjas For Ninjas</h3>
     <a href="/allblogs" class="btn">See All Blogs</a>
   </div>
@@ -28,7 +31,7 @@
   //passwordError.textContent = "";
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     const { title, content } = {
       title: form.title.value,
@@ -46,9 +49,8 @@
       //    usernameError.textContent = data.errors.username;
         //passwordError.textContent = data.password;
       //}
-      //if (data.user) {
-      //  location.assign("/");
-      //}
+      
+        location.assign("/");
     } catch (error) {
         console.log(err)
     }
