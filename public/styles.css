@@ -45,12 +45,12 @@ nav li a{
   border-radius: 36px;
   background: #FEE996;
 }
-form h2{
+.auth-form h2{
   font-size: 2.4em;
   font-weight: 900;
   margin-bottom: 40px;
 }
-form{
+.auth-form{
   width: 360px;
   margin: 0 auto;
   padding: 30px;
@@ -58,7 +58,7 @@ form{
   border-radius: 10px;
   background: white;
 }
-input{
+.auth-form input{
   padding: 10px 12px;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -90,7 +90,7 @@ button{
 header{
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 header img{
   width: 250px;
@@ -170,7 +170,31 @@ header .btn{
   line-height: 1.6;
 }
 
+form{
+  width: 75%;
+  margin: 0 auto;
+  padding: 80px 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: white;
+}
+form input{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+form textarea{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+/* comment section styles */
 .buttons {
+  display: flex;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -232,12 +256,33 @@ header .btn{
 
 .comment {
   margin-bottom: 10px;
+  display: flex;
+  gap: 15px;
+    padding: 15px;
+  
+}
+.comment-hr{
+  margin: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+.comment-avatar {
+  flex-shrink: 0;
 }
 
+.comment-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
 .comment-author {
   font-weight: bold;
 }
-
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .comment-text {
   margin-left: 20px;
 }
