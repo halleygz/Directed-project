@@ -1,0 +1,77 @@
+<%- include('partials/header'); -%>
+
+
+<main class="main">
+  <article class="article">
+    <div class="image-placeholder"></div>
+    <div class="content">
+      <h1><%= data.title %></h1>
+      <p><%= data.content %></p>
+    </div>
+  </article>
+  <%- include('likedislike'); -%>
+  <%- include('comments'); -%>
+</main>
+<%- include('partials/footer'); -%>
+<script>
+  async function likedPost(blogId){
+    try{
+      console.log(`/blogs/${blogId}/like`)
+      const response = await fetch(`/blog/${blogId}/like`, {
+        method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+      })
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('like-count').textContent = `Likes: ${data.likes}`;
+        document.querySelector('.like-button').disabled = true;
+        document.querySelector('.dislike-button').disabled = true;
+    }
+    } catch (error){
+      console.error('Error liking post:', error)
+    }
+  }
+  async function dislikedPost(blogId){
+    try{
+      const response = await fetch(`/blog/${blogId}/dislike`, {
+        method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+      })
+      if (response.ok) {
+        const data = await response.json();
+        document.getElementById('dislike-count').textContent = `Dislikes: ${data.dislikes}`;
+        document.querySelector('.like-button').disabled = true;
+        document.querySelector('.dislike-button').disabled = true;
+    }
+    } catch (error){
+      console.error('Error liking post:', error)
+    }
+  }
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+
+    const { content } = {
+      content: form.content.value,
+    };
+    try {
+      const res = await fetch(`/blog/<%= data._id %>/comment`, {
+        method: "POST",
+        body: JSON.stringify({ content }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(err);
+    }
+  });
+</script>

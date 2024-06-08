@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<main class="main1">
+  <% data.forEach(blog => { %>
+  <div class="card">
+    <div class="image"></div>
+    <div class="text">
+      <a href="/blog/<%= blog._id %>">
+        <h2><%= blog.title %></h2>
+        <p class="article-list__date"><%= blog.createdAt.toDateString() %></p>
+      </a>
+    </div>
+  </div>
+
+  <% }) %> <% if (nextPage !== null) { %>
+
+  <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+  <% } %> 
+</main>
+<%- include('partials/footer'); -%>

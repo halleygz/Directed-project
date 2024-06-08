@@ -1,0 +1,27 @@
+<section class="comments-section">
+  <div class="comment-box">
+    <form>
+      <textarea name="content" placeholder="Write a comment..."></textarea>
+      <button class="submit-comment">Post Comment</button>
+    </form>
+  </div>
+  <div class="comments">
+    <% if (data.commenters && data.commenters.length > 0) { %>
+      <% data.commenters.forEach(comment => { %>
+        <div class="comment">
+          <div class="comment-avatar"><img src="https://avatar.iran.liara.run/public" alt="Avatar"></div>
+          <div class="comment-content">
+
+            <div class="comment-author"><%= comment.commenter %></div>
+            <div class="comment-text"><%= comment.content %></div>
+          </div>
+        </div>
+        <div class="comment-hr"></div>
+      <% }) %>
+    <% } else { %>
+      <p>No comments yet</p>
+    <% } %>
+    
+</section>
+
+

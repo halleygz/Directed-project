@@ -1,0 +1,4 @@
+node_modules
+bugref
+.env
+package-lock.json
