@@ -1,0 +1,20 @@
+<%- include('partials/header'); -%>
+
+<h1>Search results</h1>
+<main class="main1">
+    <% console.log(data) %>
+  <% data.forEach(blog => { %>
+  <div class="card">
+    <div class="image"></div>
+    <div class="text">
+      <a href="/blog/<%= blog._id %>">
+        <h2><%= blog.title %></h2>
+        <p class="article-list__date"><%= blog.createdAt.toDateString() %></p>
+      </a>
+    </div>
+  </div>
+
+  <% }) %>
+</main>
+
+<%- include('partials/footer'); -%>

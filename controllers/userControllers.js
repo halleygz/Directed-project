@@ -168,7 +168,9 @@ module.exports.my_blogs = async (req, res) => {
         authorId = decodedToken.id;
       }
     });
-    const data = await Blog.find({ authorId: authorId }).sort({ createdAt: -1 })
+    const data = await Blog.find({ authorId: authorId }).sort({
+      createdAt: -1,
+    });
     // console.log(data);
     //res.locals.data = data;
     res.render("myblogs", {
@@ -243,7 +245,7 @@ module.exports.liked_post = async (req, res) => {
     blog.likedBy.push(user);
     await blog.save();
   }
-  res.json({ likes: blog.likes })
+  res.json({ likes: blog.likes });
 };
 
 module.exports.disliked_post = async (req, res) => {
@@ -264,5 +266,35 @@ module.exports.disliked_post = async (req, res) => {
     blog.dislikedBy.push(user);
     await blog.save();
   }
-  res.json({ dislikes: blog.dislikes })
+  res.json({ dislikes: blog.dislikes });
+};
+module.exports.search = async (req, res) => {
+  try {
+    const locals = {
+      title: "search",
+      description: "searching...",
+    };
+    let user = "";
+
+    const token = req.cookies.jwt;
+    jwt.verify(token, secret, async (err, decodedToken) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log(decodedToken);
+        user = decodedToken.id;
+      }
+    });
+    let { searchTerm } = req.body;
+    const searchNoSpecial = searchTerm.replace(/[^a-zA-Z0-9]/g, "");
+    const data = await Blog.find({
+      $or: [
+        { title: { $regex: new RegExp(searchNoSpecial, "i") } },
+        { content: { $regex: new RegExp(searchNoSpecial, "i") } },
+      ],
+    });
+    res.render("search", { locals, data,user });
+  } catch (error) {
+    console.log(error);
+  }
 };
