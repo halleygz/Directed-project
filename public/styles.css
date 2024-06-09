@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body{
-  margin: 20px 40px;
+  margin: 20px 0;
   font-size: 1.2rem;
   letter-spacing: 1px;
   background: hwb(0 64% 7%);
@@ -21,6 +21,7 @@ a{
   text-decoration: none;
 }
 nav{
+  margin: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -90,8 +91,33 @@ button{
 header{
   display: flex;
   align-items: center;
+  margin-left: 40px;
+  margin-right: 40px;
   margin-top: 100px;
+  margin-bottom: 40px;
 }
+.hero-container-1 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: hwb(0deg 75.23% 3.85%);
+}
+.hero-container-2 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-color: hwb(0deg 70.25% 9.1%);
+}
+.hero-container-1 img {
+  width: 450px;
+}
+.hero-container-2 img{
+  width: 450px;
+}
+
 header img{
   width: 250px;
   margin-right: 40px;
@@ -173,7 +199,7 @@ header .btn{
 
 form{
   width: 75%;
-  margin: 0 auto;
+  margin: 60px auto;
   padding: 80px 30px;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
   border-radius: 10px;
@@ -287,9 +313,12 @@ form textarea{
 .comment-text {
   margin-left: 20px;
 }
+.headings{
+  margin: auto;
+}
 footer{
   text-align: center;
-  margin-top: 120px;
+  margin-top: 20px;
   color: #8c8c8c;
 }
 @media (max-width: 768px) {

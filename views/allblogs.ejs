@@ -3,6 +3,9 @@
   <input type="text" aria-label="Search" name="searchTerm" placeholder="seach blogs ...">
   <button>Seach</button>
 </form> -->
+<header style="margin-top: 25px; margin-bottom: 25px">
+  <h2 class="headings">All Blogs</h2>
+</header>
 <main class="main1">
   <% data.forEach(blog => { %>
   <div class="card">
@@ -15,11 +18,16 @@
     </div>
   </div>
 
-  <% }) %> <% if (nextPage !== null) { %>
-
-  <a href="/allblogs?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
-  <% } %> 
+  <% }) %>
 </main>
+
+<% if (nextPage !== null) { %>
+<button class="headings">
+  <a href="/allblogs?page=<%= nextPage %>" class="pagination"
+    >&lt; View Older Posts</a
+  >
+</button>
+<% } %>
 <script>
   //const form = document.querySelector('form')
   //form.addEventListener("submit", async(e)=>{
