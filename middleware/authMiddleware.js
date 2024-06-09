@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+//change this jwt secret
 const secret = "halleluya"
 const User = require("../models/User")
 
@@ -19,7 +20,7 @@ const requireAuth = (req, res, next) => {
       }
     });
   } else {
-    res.redirect("login");
+    res.redirect("/login");
   }
 };
 //check current user
