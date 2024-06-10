@@ -1,3 +1,4 @@
+[![GitHub stars](https://img.shields.io/github/stars/halleygz/Directed-project.svg?style=social&label=Star&maxAge=2592000)](https://github.com/halleygz/Directed-project/stargazers)
 # Blogaa
 
 Welcome to BlogApp, a full-featured blogging platform where users can post blogs and comment on others' blogs. This project leverages MongoDB, Express.js, EJS, and Node.js to create a dynamic and interactive experience.
