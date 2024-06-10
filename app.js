@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 
 //configs
 dotenv.config();
-const PORT = 3000 || process.env.PORT;
+const PORT = 5000 || process.env.PORT;
 connectDB();
 
 //routes
