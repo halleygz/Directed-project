@@ -4,6 +4,11 @@ Welcome to BlogApp, a full-featured blogging platform where users can post blogs
 [visit the deployed site](https://directed-project.onrender.com/)
 ![BlogApp Banner](https://github.com/halleygz/Directed-project/assets/98106633/0a7623c9-0cea-46ba-bd29-6d1927bc04d3)
 
+
+### Give this repo a star
+[![GitHub stars](https://img.shields.io/github/stars/halleygz/Directed-project.svg?style=social&label=Star&maxAge=2592000)](https://github.com/halleygz/Directed-project/stargazers)
+
+
 ## Features
 
 - **User Authentication**: Secure user registration and login.
