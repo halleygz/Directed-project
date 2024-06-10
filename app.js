@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const methodOverride = require('method-override')
+const dotenv = require("dotenv");
 const connectDB = require('./config/db')
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
-const cookieParser = require("cookie-parser");
-const methodOverride = require('method-override')
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
-const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();

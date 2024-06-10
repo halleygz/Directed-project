@@ -36,12 +36,13 @@ const handleErrors = (err) => {
   }
   return errors;
 };
-const maxAge = 3 * 24 * 68 * 60;
+const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
   return jwt.sign({ id }, secret, {
     expiresIn: maxAge,
   });
 };
+
 module.exports.signup_get = (req, res) => {
   res.render("signup");
 };
