@@ -1,8 +1,8 @@
-# BlogApp
+# Blogaa
 
 Welcome to BlogApp, a full-featured blogging platform where users can post blogs and comment on others' blogs. This project leverages MongoDB, Express.js, EJS, and Node.js to create a dynamic and interactive experience.
 [visit the deployed site](https://directed-project.onrender.com/)
-![BlogApp Banner](https://example.com/banner-image.png)
+![BlogApp Banner](https://github.com/halleygz/Directed-project/assets/98106633/0a7623c9-0cea-46ba-bd29-6d1927bc04d3)
 
 ## Features
 
@@ -80,14 +80,17 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Screenshots
 
-![Home Page](https://example.com/homepage-screenshot.png)
+![Home Page](https://github.com/halleygz/Directed-project/assets/98106633/3357b63b-78d0-482e-99a7-3eec9aa07172)
+
 *Home Page*
 
-![Blog Post](https://example.com/blogpost-screenshot.png)
+![Blog Post](https://github.com/halleygz/Directed-project/assets/98106633/bd76d29e-87cb-418c-9f28-06a783ffca1c)
 *Blog Post*
 
-![Comment Section](https://example.com/comment-screenshot.png)
+
+![Comment Section](https://github.com/halleygz/Directed-project/assets/98106633/36a28da3-e893-4dfc-bf63-9b457799821c)
 *Comment Section*
+
 
 ## Contact
 
@@ -99,4 +102,4 @@ For any inquiries or feedback, feel free to reach out:
 
 ---
 
-Thank you for checking out BlogApp! We hope you enjoy using it as much as we enjoyed building it.
+Thank you for checking out Blogaa! Made with love and a lot of biscuits🍪.
